@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""The setup script for the {{ library_name }}"""
+"""The setup script for the {{ cookiecutter.library_name }}"""
 import sys
 
 from setuptools import setup, find_packages
@@ -19,7 +19,7 @@ test_requirements = ['pytest', 'pytest-runner', 'pytest-timeout', 'pytest-cache'
 extras = dict(test=test_requirements, dev=dev_requirements)
 
 authors = [
-    ("{{full_name}}", "{{email}}"),
+    ("{{cookiecutter.full_name}}", "{{cookiecutter.email}}"),
 ]
 
 setup(
@@ -30,7 +30,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Framework:: IDM-Tools :: models'
     ],
-    description="{{ project_short_description }}",
+    description="{{ cookiecutter.project_short_description }}",
     install_requires=requirements,
     long_description=readme,
     include_package_data=True,

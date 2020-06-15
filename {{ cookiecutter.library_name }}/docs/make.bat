@@ -82,7 +82,7 @@ if "%1" == "generate-api" (
     set SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance,ignore-module-all
 
     del modules.rst >nul 2>&1
-    sphinx-apidoc -f -e -o . ../{{library_name}}
+    sphinx-apidoc -f -e -o . ../{{cookiecutter.library_name}}
 	REN modules.rst {{ cookiecutter.library_name }}_index.rst
 	goto end
 )

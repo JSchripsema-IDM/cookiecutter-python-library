@@ -13,9 +13,9 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('docs/requirements.txt') }}
+          key: ${{ "{{" }} runner.os {{ "}}" }}-pip-${{ "{{" }} hashFiles('docs/requirements.txt') {{ "}}" }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ "{{" }} runner.os {{ "}}" }}-pip-
       - name: Install dependencies
         working-directory: 'docs'
         run: |

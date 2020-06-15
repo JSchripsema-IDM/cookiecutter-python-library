@@ -10,7 +10,7 @@
 # User Installation
 
 ```bash
-pip install {{ cookiecutter.library_name }} --index-url={{ pypi_server }}
+pip install {{ cookiecutter.library_name }} --index-url={{ cookiecutter.pypi_server }}
 ```
 
 ## Pre-requisites
