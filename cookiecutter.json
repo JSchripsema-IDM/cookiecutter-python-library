@@ -1,0 +1,15 @@
+{
+  "full_name": "Clinton Collins",
+  "email": "ccollins@idmod.org",
+  "github_username": "devclinton",
+  "github_owner": "InstituteforDiseaseModeling",
+  "project_name": "IDMTools Task",
+  "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "library_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "sphinx_short_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_short_description": "Python Library",
+  "pypi_username": "{{ cookiecutter.github_username }}",
+  "pypi_server": "https://packages.idmod.org/api/pypi/pypi-production/simple",
+  "linting" : "Y",
+  "docs" : "Y"
+}
