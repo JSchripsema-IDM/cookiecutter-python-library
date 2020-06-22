@@ -1,5 +1,11 @@
 name: "Build docs"
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - '{{ cookiecutter.library_name }}/**'
+      - 'docs/*'
+      - 'requirements.txt'
+      - 'setup.py'
 
 jobs:
   build-documentation:
@@ -23,3 +29,10 @@ jobs:
           python -m pip install --upgrade pip py-make
           sudo apt-get install make
           pip install -r requirements.txt
+      - name: Install library
+        run: |
+          make setup-dev
+      - name: Builds docs
+        working-directory: 'docs'
+        run: |
+          make html

@@ -1,15 +1,5 @@
-name: "Rebuild docs"
-# curl command from your cmd:
-# curl -XPOST -u "username:githubPAT" -H "Accept: application/vnd.github.everest-preview+json" \
-# -H "Content-Type: application/json" \
-# --data "{\"event_type\": \"master_doc_build\"}" \
-#  https://api.github.com/repos/{{ cookiecutter.github_owner }}/{{ cookiecutter.repo_name }}/dispatches
-#
-# Note, this test will checkout 'dev' branch
+name: "Publish docs"
 on:
-  repository_dispatch:
-    # Manually trigger with curl or Postman POST
-    types: [master_doc_build]
   release:
     types: # This configuration does not affect the page_build event above
       - created
@@ -75,6 +65,6 @@ jobs:
           GITHUB_TOKEN: ${{ "{{" }} secrets.GITHUB_TOKEN {{ "}}" }}
         with:
           upload_url: ${{ "{{" }} steps.create_release.outputs.upload_url {{ "}}" }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: { cookiecutter.library_name }}/{{ cookiecutter.library_name }}_docs.zip
+          asset_path: {{ cookiecutter.library_name }}/{{ cookiecutter.library_name }}_docs.zip
           asset_name: {{ cookiecutter.library_name }}_docs.zip
           asset_content_type: application/zip

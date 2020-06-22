@@ -94,8 +94,9 @@ author = u'Institute for Disease Modeling'
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
+import {{ cookiecutter.library_name }}
 # The short X.Y version.
-version = u'Beta'
+version = {{ cookiecutter.library_name }}.__version__
 # The full version, including alpha/beta/rc tags.
 # release = u'1.0'
 
@@ -316,8 +317,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'idm-tools-docs.tex', u'IDM-Tools',
-     u'Institute for Disease Modeling', 'manual'),
+    (master_doc, '{{ cookiecutter.library_name }}-docs.tex', u'{{ cookiecutter.project_name }}',
+     u'{{ cookiecutter.full_name }}', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -358,7 +359,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'idm-tools-docs', u'IDM-Tools',
+    (master_doc, '{{ cookiecutter.library_name }}-docs', u'{{ cookiecutter.project_name }}',
      [author], 1)
 ]
 
@@ -372,8 +373,8 @@ man_show_urls = True
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'idm-tools-docs', u'IDM-Tools',
-     author, 'Institute for Disease Modeling', 'How to use IDM-Tools for disease simulations.',
+    (master_doc, '{{ cookiecutter.library_name }}-docs', u'{{ cookiecutter.project_name }}',
+     author, '{{ cookiecutter.full_name }}', '{{ cookiecutter.project_short_description }}',
      'Miscellaneous'),
 ]
 

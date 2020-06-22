@@ -61,7 +61,7 @@ generate-api:
 	rm -rf temp
 	-rm {{ cookiecutter.library_name }}_index.rst
 	-rm modules.rst
-	SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance,ignore-module-all sphinx-apidoc -f --tocfile dummy -o . ../sphinx-apidoc -f -e -o . ../{{ cookiecutter.library_name }}
+	SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance,ignore-module-all sphinx-apidoc -f -e -o . ../{{ cookiecutter.library_name }}
 	-rm dummy.rst
 	mv modules.rst {{ cookiecutter.library_name }}_index.rst
 
@@ -73,7 +73,6 @@ external: generate-api
 
 .PHONY: html
 html: generate-api
-
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(INTERNALOPTS) $(BUILDDIR)/html
 	$(INDEXBUILD) -i $(BUILDDIR)/html -o $(BUILDDIR)/html/_static/tipuesearch/tipuesearch_content.js -u $(URLPREFIX)
 	@echo

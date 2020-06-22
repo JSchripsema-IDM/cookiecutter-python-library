@@ -4,7 +4,7 @@ IPY=python -c
 # If user did not define python, set our default to python
 PY?=python
 # Shortcut for running scripts from the dev_scripts folder
-PDS=$(PY) ../.dev_scripts/
+PDS=$(PY) ./.dev_scripts/
 # Shortcut for the cleandir command
 CLDIR=$(PDS)clean_dir.py
 # Shortcut for the run command
@@ -26,7 +26,7 @@ help:
 	$(PDS)get_help_from_makefile.py
 
 setup-dev: ## Install all dependencies needed for development
-    $(PDS)bootstrap.py
+	$(PDS)bootstrap.py
 
 clean: ## Clean most of the temp-data from the project
 	$(CLDIR) --file-patterns "*.py[co],*.done,*.log,**/.coverage" \
