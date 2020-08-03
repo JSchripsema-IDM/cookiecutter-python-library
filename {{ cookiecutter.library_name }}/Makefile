@@ -36,15 +36,13 @@ clean: ## Clean most of the temp-data from the project
 clean-all:  ## Deleting package info hides plugins so we only want to do that for packaging
 	@make clean
 	$(CLDIR) --dir-patterns "**/*.egg-info/"
+{% if cookiecutter.linting.lower()[0] == "y" %}
 
-
-{%+ if cookiecutter.linting.lower()[0] == "y" +%}
 # Linting
 lint: ## check style with flake8
 	flake8 --ignore=E501,W291 $(PACKAGE_NAME) tests
 
 {% endif %}
-
 test: ## Run our tests
 	$(FULL_TEST_CMD)
 
@@ -96,8 +94,7 @@ bump-patch: ## bump the patch version
 
 bump-patch-dry-run: ## bump the patch version(dry run)
 	bump2version patch --dry-run --allow-dirty --verbose
-
-{%+ if cookiecutter.docs.lower()[0] == "y" +%}
+{% if cookiecutter.docs.lower()[0] == "y" %}
 # Docs
 docs: ## build docs(only works on linux at moment due to make.bat not running by default)
 	$(PDR) -wd 'docs' -ex 'make html'
