@@ -6,6 +6,7 @@ on:
       # only run this on
       - dev
       - master
+      - release**
     paths:
       - '{{ cookiecutter.library_name }}/**'
       - 'requirements.txt'

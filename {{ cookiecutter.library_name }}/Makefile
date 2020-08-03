@@ -1,4 +1,4 @@
-.PHONY: clean clean-all lint coverage release dist bump-minor bump-major bump-patch bump-release
+.PHONY: clean clean-all lint coverage release dist bump-minor bump-major bump-patch bump-release docs docs-server test test-failed
 # Python from command line
 IPY=python -c
 # If user did not define python, set our default to python
@@ -104,3 +104,6 @@ docs-server: ## builds docs and launch a webserver
 	@+$(IPY) "print('Serving documentation @ server at http://localhost:8000 . Ctrl + C Will Stop Server')"
 	$(PDR) -wd 'docs/_build/html' -ex 'python -m http.server'
 {% endif %}
+
+licenses:
+	pip-licenses --output-file NOTICES.txt
