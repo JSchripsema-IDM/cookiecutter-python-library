@@ -52,7 +52,7 @@ help:
 .PHONY: clean
 clean:
 	rm -rf $(BUILDDIR)/*
-	rm -rf idmtools*.rst
+	rm -rf {{ cookiecutter.library_name }}*.rst
 
 .PHONY: external generate-api
 

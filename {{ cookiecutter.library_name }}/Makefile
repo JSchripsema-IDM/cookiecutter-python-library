@@ -96,10 +96,10 @@ bump-patch-dry-run: ## bump the patch version(dry run)
 
 {%- if cookiecutter.docs.lower()[0] == "y" -%}
 # Docs
-build-docs: ## build docs(only works on linux at moment due to make.bat not running by default)
+docs: ## build docs(only works on linux at moment due to make.bat not running by default)
 	$(PDR) -wd 'docs' -ex 'make html'
 
-build-docs-server: ## builds docs and launch a webserver
+docs-server: ## builds docs and launch a webserver
 	@make build-docs
 	@+$(IPY) "print('Serving documentation @ server at http://localhost:8000 . Ctrl + C Will Stop Server')"
 	$(PDR) -wd 'docs/_build/html' -ex 'python -m http.server'

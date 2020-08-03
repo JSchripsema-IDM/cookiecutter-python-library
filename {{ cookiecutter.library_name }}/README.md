@@ -47,4 +47,4 @@ On Windows, you can use `pymake` instead of `make`
 
 ## Building docs
 
-TODO
+```make docs```
