@@ -91,7 +91,6 @@ if "%1" == "external" (
 	call make.bat generate-api
 	%SPHINXBUILD% -b html %ALLSPHINXOPTS% %BUILDDIR%/html
 	if errorlevel 1 exit /b 1
-	%INDEXBUILD% -i %BUILDDIR%/html -o %BUILDDIR%/html/_static/tipuesearch/tipuesearch_content.js -u %URLPREFIX%
 	echo.
 	echo.Build finished. The HTML pages are in %BUILDDIR%/html.
 	goto end
@@ -101,7 +100,6 @@ if "%1" == "html" (
 	call make.bat generate-api
 	%SPHINXBUILD% -b html %ALLSPHINXOPTS% %INTERNALOPTS% %BUILDDIR%/html
 	if errorlevel 1 exit /b 1
-	%INDEXBUILD% -i %BUILDDIR%/html -o %BUILDDIR%/html/_static/tipuesearch/tipuesearch_content.js -u %URLPREFIX%
 	echo.
 	echo.Build finished. The HTML pages are in %BUILDDIR%/html.
 	goto end
@@ -109,7 +107,6 @@ if "%1" == "html" (
 
 if "%1" == "tipuesearch" (
 	call make.bat generate-api
-	%INDEXBUILD% -i %BUILDDIR%/html -o %BUILDDIR%/html/_static/tipuesearch/tipuesearch_content.js -u %URLPREFIX%
 	echo.
 	echo. Build finished. Updated tipuesearch content is at %BUILDDIR%/html/_static/tipuesearch/tipuesearch_content.js
 	goto end

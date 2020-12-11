@@ -1,6 +1,6 @@
-=================
+====================
 Welcome to |{{ cookiecutter.sphinx_short_name }}|
-=================
+====================
 
 |{{ cookiecutter.sphinx_short_name }}| give short description on purpose of library.
 
