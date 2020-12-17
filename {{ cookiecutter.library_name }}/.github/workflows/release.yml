@@ -15,7 +15,8 @@ on:
 
 jobs:
   release:
-    name: "Release {{ cookiecutter.library_name }}"
+    release_{{ cookiecutter.library_name }}
+      name: "Release {{ cookiecutter.library_name }}"
       runs-on: ubuntu-latest
       steps:
         - name: Set up Python
