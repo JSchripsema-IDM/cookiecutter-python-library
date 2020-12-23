@@ -21,8 +21,20 @@ PARALLEL_TEST_COUNT?=8
 TEST_COMMAND =  py.test --timeout=600 --junitxml=$(REPORT_DIR)/$(TEST_REPORT) --html=$(REPORT_DIR)/$(HTML_TEST_REPORT) --self-contained-html $(TEST_EXTRA_OPTS)
 COVERAGE_OPTS := --cov-config=.coveragerc --cov-branch --cov-append --cov={{ cookiecutter.library_name }}
 
+clean: ## Clean most of the temp-data from the project
+	-rm -rf *.log
+	-rm -rf $(REPORT_DIR)
+
 reports-exist:
 	-mkdir reports
+
+merge-reports: ## merge results from serial and parallel tests
+	junitparser merge $(REPORT_DIR)/serial.test_results.xml $(REPORT_DIR)/$(TEST_REPORT) $(REPORT_DIR)/$(TEST_REPORT)
+
+mv-serial-reports: ## Moves report to serial folder
+	$(MV) $(REPORT_DIR)/$(TEST_REPORT) $(REPORT_DIR)/serial.$(TEST_REPORT)
+	$(MV) $(REPORT_DIR)/$(HTML_TEST_REPORT) $(REPORT_DIR)/serial.$(HTML_TEST_REPORT)
+
 
 test: reports-exist ## Run default set of tests which exclude comps and docker tests
 	-mkdir reports
