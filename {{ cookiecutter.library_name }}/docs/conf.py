@@ -86,7 +86,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'IDM-Tools'
+project = u'{{ cookiecutter.library_name.replace("_", "-") }}'
 copyright = u'2020, Intellectual Ventures Management, LLC (IVM). All rights reserved'
 author = u'Institute for Disease Modeling'
 

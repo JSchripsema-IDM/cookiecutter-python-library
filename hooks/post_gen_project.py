@@ -10,9 +10,9 @@ if not linting:
     os.remove(os.path.join('.github', 'workflows', 'lint.yml'))
 
 if not docs:
-    print('Removing docs')
-    os.remove(os.path.join('.github', 'workflows', 'publish-documentation.yml'))
+    print('Removing docs options, including github actions, read the docs, and the docs tree')
     os.remove(os.path.join('.github', 'workflows', 'build-docs.yml'))
+    os.remove('.readthedocs.yml')
     shutil.rmtree('docs')
 
 print("""
@@ -23,13 +23,6 @@ The next thing to do is
     git push 
 2. In github, configure your secrets for PYPI_STAGING_USERNAME, PYPI_STAGING_PASSWORD, and DOCS_DEPLOY_KEY if you
     enabled docs.
-3. If you enabled docs, you need to then
-    git checkout --orphan gh-pages
-    create an empty file called .nojekyll
-    git add .nojekyll
-    git commit -m "First commit of docs"
-    git push
-    git checkout master
-4.  Now you are ready to begin using your repo. Github actions have been enabled for linting(optional), docs(optional),
+3.  Now you are ready to begin using your repo. Github actions have been enabled for linting(optional), docs(build only),
     packaging and publishing. To publish to IDM's production pypi server, you need to provide a basic suite of tests
 """)

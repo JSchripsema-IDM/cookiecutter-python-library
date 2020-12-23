@@ -36,10 +36,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install make
-          pip install black flake8
+          python -m pip install --upgrade pip
       - name: Run setup-dev
         run: |
           make setup-dev
+        env:
+          BUILD_DEBUG: 1
       - name: run {{ cookiecutter.library_name }} tests
         run: |
             py.test --durations=3 -v --junitxml=test_results.xml
