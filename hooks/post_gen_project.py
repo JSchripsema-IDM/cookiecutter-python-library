@@ -17,12 +17,22 @@ if not docs:
 
 print("""
 The next thing to do is 
+
 1. Add current project to github
-    git add .
-    git commit -m "Initial version of library"
-    git push 
-2. In github, configure your secrets for PYPI_STAGING_USERNAME, PYPI_STAGING_PASSWORD, and DOCS_DEPLOY_KEY if you
-    enabled docs.
+     git add .bumpversion.cfg .dev_scripts/ .github .gitignore .readthedocs.yml *
+     git commit -m "Initial version of library"
+     git push 
+    
+   You will need to create a repository on Github, https://github.com/new
+   Once you have created it, you need to add it as a remote
+     git remote add origin <repo url>
+    
+2. In github, configure your secrets for PYPI_STAGING_USERNAME and PYPI_STAGING_PASSWORD. These credentials allow you to push packages to a
+   pypi the configured staging pypi registry. For IDM repo's, it is recommended to work with test to setup a project account. Alternatively, you
+   can use your own idm email and password. Just remember you will need to update the password here when you change it.
+   
 3.  Now you are ready to begin using your repo. Github actions have been enabled for linting(optional), docs(build only),
     packaging and publishing. To publish to IDM's production pypi server, you need to provide a basic suite of tests
+    
+4. Start development. See README.txt for setup instructions
 """)

@@ -13,6 +13,7 @@ PDS=$(PY) $(mkfile_dir)
 # Where should we store our reports
 REPORT_DIR?= reports
 TEST_REPORT ?= test_results.xml
+HTML_TEST_REPORT ?= test_results.html
 # Test Configuration
 SERIAL_TESTING?=
 PARALLEL_TESTING?=1

@@ -6,8 +6,8 @@ mkfile_dir := $(dir $(mkfile_path))
 # Platform Independent options for common commands
 MV?=mv
 RM?=rm
-# Convience function for running dev scripts
-PDS=$(PY) $(mkfile_dir)
+# Convenience function for running dev scripts
+PDS=$(PY) ./.dev_scripts/
 PY?=python
 IPY=python -c
 PDR=$(PDS)run.py
