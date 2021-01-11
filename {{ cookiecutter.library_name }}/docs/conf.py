@@ -18,7 +18,15 @@
 #
 import os
 import sys
+import subprocess
+import configparser
 import sphinx_rtd_theme
+
+
+if sys.platform in ["linux", "darwin"]:
+    subprocess.check_output(["make", "generate-api"], cwd=os.path.dirname(os.path.abspath(__file__)))
+else:
+    subprocess.check_output(["make.bat", "generate-api"], cwd=os.path.dirname(os.path.abspath(__file__)))
 
 # -- General configuration ------------------------------------------------
 
@@ -30,7 +38,7 @@ import sphinx_rtd_theme
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.imgmath',
+    'sphinx.ext.mathjax',
     'sphinx.ext.githubpages',
     'sphinx.ext.autodoc',
     'sphinxcontrib.napoleon',
@@ -47,23 +55,7 @@ autodoc_default_options = {
     'exclude-members': '__all__'
 }
 
-autodoc_mock_imports = ['shapefile',
-                        'polyline',
-                        'psycopg2',
-                        'npyscreen',
-                        'wx',
-                        '_curses',
-                        'ConfigParser',
-                        'MenuForm',
-                        'osm2nx',
-                        'pika',
-                        'create_experiment',
-                        'create_simulation',
-                        'dramatiq',
-                        'docker_run',
-                        'dramatiq.GenericActor',
-                        'GenericActor'
-                        ]
+autodoc_mock_imports = []
 
 
 napoleon_google_docstring = True
@@ -87,7 +79,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'{{ cookiecutter.library_name.replace("_", "-") }}'
-copyright = u'2020, Bill & Melinda Gates Foundation. All rights reserved.'
+copyright = f'1999 - {datetime.today().year}, Bill & Melinda Gates Foundation. All rights reserved.'
 author = u'Institute for Disease Modeling'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -201,16 +193,7 @@ html_static_path = ['_static']
 
 html_context = {
     'css_files': [
-        '_static/theme_overrides.css',
-        '_static/tipuesearch/tipuesearch.css'
-    ],
-    'script_files': [
-        '_static/jquery.js',
-        '_static/tipuesearch/tipuesearch.js',
-        '_static/tipuesearch/tipuesearch_content.js',
-        '_static/tipuesearch/tipuesearch_set.js',
-        '_static/runsearch.js',
-        '_static/tablecollapse.js'
+        '_static/theme_overrides.css'
     ]
 }
 # Add any extra paths that contain custom files (such as robots.txt or
@@ -291,7 +274,7 @@ html_use_opensearch = 'www.idmod.org/docs/'
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'IDM-Tools'
+htmlhelp_basename = '{{ cookiecutter.library_name.replace("_", "-") }}'
 
 # -- Options for LaTeX output ---------------------------------------------
 
