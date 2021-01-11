@@ -5,8 +5,6 @@
 SPHINXOPTS    = -W
 INTERNALOPTS  = -t internal
 SPHINXBUILD   = sphinx-build
-INDEXBUILD    = python $(BUILDDIR)/../scripts/gti.py
-URLPREFIX	  = "."
 PAPER         =
 BUILDDIR      = _build
 
@@ -20,7 +18,6 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 .PHONY: help
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
-	@echo "  external   to make standalone HTML files for public release"
 	@echo "  html       to make standalone HTML files"
 	@echo "  dirhtml    to make HTML files named index.html in directories"
 	@echo "  singlehtml to make a single large HTML file"
@@ -46,7 +43,6 @@ help:
 	@echo "  linkcheck  to check all external links for integrity"
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
 	@echo "  coverage   to run coverage check of the documentation (if enabled)"
-	@echo "  tipuesearch to make tipue static search content"
 	@echo "  dummy      to check syntax errors of document sources"
 
 .PHONY: clean
@@ -61,7 +57,7 @@ generate-api:
 	rm -rf temp
 	-rm {{ cookiecutter.library_name }}_index.rst
 	-rm modules.rst
-	SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance,ignore-module-all sphinx-apidoc -f -e -o . ../{{ cookiecutter.library_name }}
+	SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance,ignore-module-all sphinx-apidoc -f -e -o -M . ../{{ cookiecutter.library_name }}
 	-rm dummy.rst
 	mv modules.rst {{ cookiecutter.library_name }}_index.rst
 
@@ -73,15 +69,10 @@ external: generate-api
 
 .PHONY: html
 html: generate-api
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(INTERNALOPTS) $(BUILDDIR)/html
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
-
-.PHONY: tipuesearch
-tipuesearch: generate-api
-	@echo
-	@echo "Build finished. Updated tipuesearch content is at $(BUILDDIR)/html/_static/tipuesearch/tipuesearch_content.js"
 
 .PHONY: dirhtml
 dirhtml: generate-api
