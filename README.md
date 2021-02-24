@@ -8,6 +8,11 @@
 * Run Tests
 
 # Setup
+Use 
+```
+cookiecutter gh:InstituteforDiseaseModeling/cookiecutter-python-library
+```
+to create a project from this template
 
 ## Github Actions
 
