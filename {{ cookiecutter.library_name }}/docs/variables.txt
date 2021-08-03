@@ -17,5 +17,22 @@
 .. |IDM_s| replace:: IDM
 .. |{{ cookiecutter.sphinx_short_name }}| replace:: {{ cookiecutter.project_name }}
 .. |Python_supp| replace:: Python 3.6 64-bit
+.. |EMODPY_s| replace:: emodpy
+.. |EMODPY_malaria| replace:: emodpy-malaria
+.. |EMODPY_generic| replace:: emodpy-generic
+.. |EMODPY_hiv| replace:: emodpy-hiv
+.. |EMODPY_tbhiv| replace:: emodpy-tbhiv
+.. |emod_api| replace:: emod-api
+.. |EMOD_l| replace:: Epidemiological MODeling software (EMOD)
+.. |EMOD_s| replace:: EMOD
+.. |IT_l| replace:: idmtools
+.. |IT_s| replace:: idmtools
+.. |SSMT_l| replace:: Server-Side Modeling Tools (SSMT)
+.. |SSMT_s| replace:: SSMT
+.. |COMPS_l| replace:: COmputational Modeling Platform Service (COMPS)
+.. |COMPS_s| replace:: COMPS
+.. |exe_l| replace:: EMOD executable (Eradication.exe)
+.. |exe_s| replace:: Eradication.exe
+.. |linux_binary| replace:: Eradication binary for Linux
 
-.. _GitHub repository: https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.repo_name }}
+.. _GitHub: https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.repo_name }}
