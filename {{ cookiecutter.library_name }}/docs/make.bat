@@ -6,10 +6,7 @@ if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
 set SPHINXOPTS=-W
-set INTERNALOPTS=-t internal
 set BUILDDIR=_build
-set INDEXBUILD=python %BUILDDIR%/../scripts/gti.py
-set URLPREFIX="."
 set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% .
 set I18NSPHINXOPTS=%SPHINXOPTS% .
 if NOT "%PAPER%" == "" (
@@ -22,7 +19,6 @@ if "%1" == "" goto help
 if "%1" == "help" (
 	:help
 	echo.Please use `make ^<target^>` where ^<target^> is one of
-	echo.  external   to make standalone HTML files for public release
 	echo.  html       to make standalone HTML files
 	echo.  dirhtml    to make HTML files named index.html in directories
 	echo.  singlehtml to make a single large HTML file
@@ -44,7 +40,6 @@ if "%1" == "help" (
 	echo.  linkcheck  to check all external links for integrity
 	echo.  doctest    to run all doctests embedded in the documentation if enabled
 	echo.  coverage   to run coverage check of the documentation if enabled
-	echo.  tipuesearch to make tipue static search content
 	echo.  dummy      to check syntax errors of document sources
 	goto end
 )
@@ -82,33 +77,18 @@ if "%1" == "generate-api" (
     set SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance,ignore-module-all
 
     del modules.rst >nul 2>&1
-    sphinx-apidoc -f -e -o . ../{{ cookiecutter.library_name }}
+    sphinx-apidoc -f -e -o -M . ../{{ cookiecutter.library_name }}
 	REN modules.rst {{ cookiecutter.library_name }}_index.rst
 	goto end
 )
 
-if "%1" == "external" (
+
+if "%1" == "html" (
 	call make.bat generate-api
 	%SPHINXBUILD% -b html %ALLSPHINXOPTS% %BUILDDIR%/html
 	if errorlevel 1 exit /b 1
 	echo.
 	echo.Build finished. The HTML pages are in %BUILDDIR%/html.
-	goto end
-)
-
-if "%1" == "html" (
-	call make.bat generate-api
-	%SPHINXBUILD% -b html %ALLSPHINXOPTS% %INTERNALOPTS% %BUILDDIR%/html
-	if errorlevel 1 exit /b 1
-	echo.
-	echo.Build finished. The HTML pages are in %BUILDDIR%/html.
-	goto end
-)
-
-if "%1" == "tipuesearch" (
-	call make.bat generate-api
-	echo.
-	echo. Build finished. Updated tipuesearch content is at %BUILDDIR%/html/_static/tipuesearch/tipuesearch_content.js
 	goto end
 )
 
