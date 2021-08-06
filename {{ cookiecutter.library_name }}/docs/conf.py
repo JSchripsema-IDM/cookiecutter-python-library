@@ -32,6 +32,8 @@ else:
 
 # -- General configuration ------------------------------------------------
 
+tags.add('{{ cookiecutter.library_name.replace("_", "-") }}')
+
 # If your docs needs a minimal Sphinx version, state it here.
 #
 # needs_sphinx = '1.0'
@@ -46,7 +48,10 @@ extensions = [
     'sphinxcontrib.napoleon',
     'sphinx.ext.todo',
     'plantweb.directive',
-    'sphinxcontrib.programoutput'
+    'sphinxcontrib.programoutput',
+    'sphinx.ext.intersphinx',
+    'sphinxext.remoteliteralinclude',
+    'sphinx_copybutton'
 ]
 
 plantuml = 'plantweb'
@@ -195,9 +200,12 @@ html_static_path = ['_static']
 
 html_context = {
     'css_files': [
-        '_static/theme_overrides.css'
+        '_static/theme_overrides.css',
+        '_static/copy_button.css'
     ]
 }
+
+html_js_files = ['show_block_by_os.js']
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the docs.
@@ -382,3 +390,33 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 # intersphinx_mapping = {'https://docs.python.org/': None}
+
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
+                       'emod_api': ('https://docs.idmod.org/projects/emod-api/en/latest/', None),
+                       'emodpy': ('https://docs.idmod.org/projects/emodpy/en/latest/', None),
+                       'idmtools': ('https://docs.idmod.org/projects/idmtools/en/latest/', None),
+                       'idmtools-calibra': ('https://docs.idmod.org/projects/idmtools_calibra/en/latest/', None),
+                       'idmtools-joblib': ('https://docs.idmod.org/projects/idmtools-joblib/en/latest/', None),
+                       'emodpy-calibra': ('https://docs.idmod.org/projects/emodpy-calibra/en/latest/', None),
+                       'emodpy-malaria': ('https://docs.idmod.org/projects/emodpy-malaria/en/latest/', None),
+                       'emodpy-measles': ('https://docs.idmod.org/projects/emodpy-measles/en/latest/', None),
+                       'emodpy-tbhiv': ('https://docs.idmod.org/projects/emodpy-tbhiv/en/latest/', None),
+                       'emodpy-covid': ('https://docs.idmod.org/projects/emodpy-covid/en/latest/', None),
+                       'emodpy-generic': ('https://docs.idmod.org/projects/emodpy-generic/en/latest/', None),
+                       'emodpy-hiv': ('https://docs.idmod.org/projects/emodpy-hiv/en/latest/', None),
+                       'emod-generic': ('https://docs.idmod.org/projects/emod-generic/en/latest/', None),
+                       'emod-malaria': ('https://docs.idmod.org/projects/emod-malaria/en/latest/', None),
+                       'emod-vector': ('https://docs.idmod.org/projects/emod-vector/en/latest/', None),
+                       'emod-hiv': ('https://docs.idmod.org/projects/emod-hiv/en/latest/', None),
+                       'emod-sti': ('https://docs.idmod.org/projects/emod-sti/en/latest/', None),
+                       'emod-airborne': ('https://docs.idmod.org/projects/emod-airborne/en/latest/', None),
+                       'emod-tbhiv': ('https://docs.idmod.org/projects/emod-tuberculosis/en/latest/', None),
+                       'emod-environmental': ('https://docs.idmod.org/projects/emod-environmental/en/latest/', None),
+                       'emod-typhoid': ('https://docs.idmod.org/projects/emod-typhoid/en/latest/', None),
+                       'vis-tools': ('https://docs.idmod.org/projects/vis-tools/en/latest/', None),
+                       'pycomps': ('https://docs.idmod.org/projects/pycomps/en/latest/', None),
+                       'covasim': ('https://docs.idmod.org/projects/covasim/en/latest/', None),
+                       'synthpops': ('https://docs.idmod.org/projects/synthpops/en/latest/', None),
+                       'dymodetron': ('https://docs.idmod.org/projects/dymodetron/en/latest/', None),
+                       'cms': ('https://docs.idmod.org/projects/cms/en/latest/', None)
+                       }

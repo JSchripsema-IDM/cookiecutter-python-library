@@ -2,8 +2,7 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    = -W
-INTERNALOPTS  = -t internal
+SPHINXOPTS    = -W -t {{ cookiecutter.library_name.replace("_", "-") }}
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
@@ -50,8 +49,6 @@ clean:
 	rm -rf $(BUILDDIR)/*
 	rm -rf {{ cookiecutter.library_name }}*.rst
 
-.PHONY: external generate-api
-
 # Generates the API doc
 generate-api:
 	rm -rf temp
@@ -60,12 +57,6 @@ generate-api:
 	SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance,ignore-module-all sphinx-apidoc -f -e -o -M . ../{{ cookiecutter.library_name }}
 	-rm dummy.rst
 	mv modules.rst {{ cookiecutter.library_name }}_index.rst
-
-external: generate-api
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	$(INDEXBUILD) -i $(BUILDDIR)/html -o $(BUILDDIR)/html/_static/tipuesearch/tipuesearch_content.js -u $(URLPREFIX)
-	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 .PHONY: html
 html: generate-api

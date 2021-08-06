@@ -18,7 +18,3 @@ more information, see documentation for venv_ or Anaconda_.
 Installation
 ============
 
-
-
-Quick start guide
-=================
