@@ -33,3 +33,5 @@ PYPI_STAGING_PASSWORD: Password for your pypi staging user
 DOCS_DEPLOY_KEY
 
 ### Docs
+
+Creating a project from this template also creates files for some simple stubbed documentation source files. Guidance on how to write documenation is available at https://docs.idmod.org/projects/doc-guidance/en/latest/. Contact Jen Schripsema to create a project on Read the Docs to automatically build and host the HTML documentation. 
