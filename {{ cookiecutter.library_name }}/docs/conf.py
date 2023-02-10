@@ -51,7 +51,10 @@ extensions = [
     'sphinxcontrib.programoutput',
     'sphinx.ext.intersphinx',
     'sphinxext.remoteliteralinclude',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'myst_parser', # Enable writing source files in Markdown
+    'sphinx.ext.viewcode', # Add a link to the Python source code for classes, functions etc.
+    'nbsphinx' # Enable building Jupyter notebooks into the docs
 ]
 
 plantuml = 'plantweb'
@@ -70,6 +73,24 @@ napoleon_google_docstring = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+
+myst_enable_extensions = [
+    "amsmath",
+    "attrs_inline",
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
+    "inv_link",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    "strikethrough",
+    "substitution",
+    "tasklist",
+]
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:

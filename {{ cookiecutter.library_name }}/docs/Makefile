@@ -54,7 +54,7 @@ generate-api:
 	rm -rf temp
 	-rm {{ cookiecutter.library_name }}_index.rst
 	-rm modules.rst
-	SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance,ignore-module-all sphinx-apidoc -f -e -o -M . ../{{ cookiecutter.library_name }}
+	SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance,ignore-module-all sphinx-apidoc -f -e -M -o . ../{{ cookiecutter.library_name }}
 	-rm dummy.rst
 	mv modules.rst {{ cookiecutter.library_name }}_index.rst
 
